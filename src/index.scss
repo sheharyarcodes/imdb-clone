@@ -12,14 +12,16 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --main: #2c3e50; /* Darker blue-gray */
-  --main2: #273746; /* Dark blue-gray */
-  --main3: #1a2533; /* Darker navy blue */
-  --main-lighter: #4d79a3; /* Lighter blue */
-  --main-light: #416181; /* Light blue-gray */
-  --orange: #e74c3c; /* Orange */
-  --bright-orange: #f39c12; /* Bright orange */
-  --gradient: linear-gradient(98.37deg, #ff9100 0.99%, #ffae00 100%);
+  --primary-background: #232323; /* Primary background color */
+  --secondary-background: #333333; /* Secondary background color */
+  --primary-text: #ffffff; /* Primary text color */
+  --secondary-text: #bdc3c7; /* Secondary text color */
+  --accent-color: #3498db; /* Accent color */
+  --hover-color: #e74c3c; /* Hovering color */
+  --cta-button: #f39c12; /* Call-to-action button color */
+  --border-color: #2c3e50; /* Border color */
+  --shadow-color: #000000; /* Box shadow color */
+  --primary-gradient: linear-gradient(98.37deg, #ff9100 0.99%, #ffae00 100%);
   --hover-gradient: linear-gradient(98.37deg, #1469a6 0.99%, #00bfff 100%);
 }
 
@@ -30,7 +32,7 @@
 }
 
 body {
-  background-color: var(--main);
+  background-color: var(--primary-background);
 }
 
 ::-webkit-scrollbar {
