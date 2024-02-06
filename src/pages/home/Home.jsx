@@ -1,12 +1,12 @@
 import React from "react";
 import "./style.scss";
-import HeroBanner from "./heroBanner/HeroBanner";
+import { HeroBanner, Trending } from "./index";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="home">
       <HeroBanner />
-      <div style={{ height: 1000 }}></div>
+      <Trending />
     </div>
   );
 };
