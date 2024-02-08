@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ContentWrapper, SwitchTab, Carousel } from "../../../components";
 import useFetch from "../../../hooks/useFetch";
+
 const Trending = () => {
   const [endpoint, setEndpoint] = useState("day");
   const { data, loading } = useFetch(`/trending/all/${endpoint}`);

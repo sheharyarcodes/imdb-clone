@@ -1,0 +1,12 @@
+.rating {
+  display: flex;
+  gap: 5px;
+  color: yellow;
+  font-size: 16px;
+
+  .text {
+    font-weight: 700;
+    color: #fff;
+    margin-top: 1px;
+  }
+}
