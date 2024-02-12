@@ -28,6 +28,17 @@ const HeroBanner = () => {
     }
   };
 
+  const headerText = () => {
+    const time = new Date().getHours();
+    if (time >= 0 && time < 12) {
+      return "morning";
+    } else if (time >= 12 && time < 17) {
+      return "afternoon";
+    } else {
+      return "evening";
+    }
+  };
+
   return (
     <div className="heroBanner">
       {!loading && (
@@ -38,7 +49,9 @@ const HeroBanner = () => {
       <div className="opacity-layer"></div>
       <ContentWrapper>
         <div className="heroBannerContent">
-          <h1 className="title">Good morning!</h1>
+          <h1 className="title">
+            Good <span>{headerText()}</span>!
+          </h1>
           <p className="subtitle">Explore millions of movies and TV shows.</p>
           <div className="searchBox">
             <input
