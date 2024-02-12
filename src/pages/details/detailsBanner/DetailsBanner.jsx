@@ -4,8 +4,15 @@ import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import useFetch from "../../../hooks/useFetch";
 import PosterFallback from "../../../assets/no-poster.png";
-import { ContentWrapper, Genres, Image, Rating } from "../../../components";
+import {
+  ContentWrapper,
+  Genres,
+  Image,
+  Rating,
+  VideoPopup,
+} from "../../../components";
 import PlayIcon from "../../../icons/PlayIcon";
+import { nanoid } from "@reduxjs/toolkit";
 
 import "./style.scss";
 
@@ -14,21 +21,26 @@ import "./style.scss";
 const DetailsBanner = ({ video, crew }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
+
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}`);
+  console.log(data);
 
   const { url } = useSelector((state) => state.home);
 
   const _genres = data?.genres.map((g) => g.id);
 
+  const director = crew?.filter((d) => d.job === "Director");
+  const writer = crew?.filter(
+    (w) => w.job === "Screenplay" || w.job === "Story" || w.job === "Writer"
+  );
+
   const toHoursAndMinutes = (totalMinutes) => {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    return `${hours}h${minutes.length > 0 ? `${minutes}m` : ""}`;
+    return `${hours}h ${minutes > 0 ? `${minutes}m` : ""}`;
   };
 
-  // director
-  // writer
   return (
     <div className="detailsBanner">
       {!loading ? (
@@ -63,7 +75,13 @@ const DetailsBanner = ({ video, crew }) => {
                     <Genres data={_genres} />
 
                     <div className="row">
-                      <div className="playbtn" onClick={() => {}}>
+                      <div
+                        className="playbtn"
+                        onClick={() => {
+                          setShow(true);
+                          setVideoId(video.key);
+                        }}
+                      >
                         <PlayIcon />
                         <span className="text">
                           Watch
@@ -108,9 +126,56 @@ const DetailsBanner = ({ video, crew }) => {
                       )}
                     </div>
 
-                    {/* director / writer / creator */}
+                    {director?.length > 0 && (
+                      <div className="info">
+                        <span className="text bold">Director: </span>
+                        <span className="text">
+                          {director.map((d, i) => (
+                            <span key={nanoid()}>
+                              {d.name}
+                              {director.length - 1 !== i && ", "}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
+
+                    {writer?.length > 0 && (
+                      <div className="info">
+                        <span className="text bold">Writer: </span>
+                        <span className="text">
+                          {writer.map((w, i) => (
+                            <span key={nanoid()}>
+                              {w.name}
+                              {writer.length - 1 !== i && ", "}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
+
+                    {data?.created_by?.length > 0 && (
+                      <div className="info">
+                        <span className="text bold">Creator: </span>
+                        <span className="text">
+                          {data?.created_by?.map((c, i) => (
+                            <span key={nanoid()}>
+                              {c.name}
+                              {data?.created_by.length - 1 !== i && ", "}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
+
+                <VideoPopup
+                  show={show}
+                  setShow={setShow}
+                  videoId={videoId}
+                  setVideoId={setVideoId}
+                />
               </ContentWrapper>
             </React.Fragment>
           )}

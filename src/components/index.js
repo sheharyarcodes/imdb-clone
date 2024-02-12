@@ -6,6 +6,7 @@ import Carousel from "./carousel/Carousel";
 import SwitchTab from "./switchTab/SwitchTab";
 import Genres from "./genres/Genres";
 import Rating from "./rating/Rating";
+import VideoPopup from "./videoPopup/VideoPopup";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   SwitchTab,
   Genres,
   Rating,
+  VideoPopup,
 };

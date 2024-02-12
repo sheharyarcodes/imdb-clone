@@ -68,7 +68,7 @@
         font-weight: 600;
         line-height: 40px;
         @include md {
-          font-size: 34px;
+          font-size: 38px;
           line-height: 44px;
         }
       }
@@ -102,7 +102,7 @@
           gap: 10px;
           .heading {
             font-size: 20px;
-            font-weight: 700;
+            font-weight: 600;
 
             @include md {
               font-size: 24px;
@@ -120,13 +120,14 @@
         }
         .playbtn {
           display: flex;
+          width: fit-content;
           align-items: center;
           gap: 8px;
           opacity: 0.7;
           transition: all 1s ease-in-out;
           cursor: pointer;
           svg {
-            width: 60px;
+            width: 50px;
           }
           .text {
             color: #fff;
@@ -169,9 +170,12 @@
       .overview {
         margin: 10px 0;
         .heading {
-          font-size: 24px;
-          font-weight: 700;
+          font-size: 20px;
+          font-weight: 600;
           margin-bottom: 10px;
+          @include md {
+            font-size: 24px;
+          }
         }
         .description {
           line-height: 24px;
