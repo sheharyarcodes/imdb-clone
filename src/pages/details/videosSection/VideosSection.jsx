@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 
 import "./style.scss";
 
@@ -10,6 +11,8 @@ const VideosSection = ({ data, loading }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
 
+  const videosRef = useRef(null);
+
   const loadingSkeleton = () => {
     return (
       <div className="skItem">
@@ -20,12 +23,37 @@ const VideosSection = ({ data, loading }) => {
     );
   };
 
+  const handleNavigation = (direction) => {
+    const container = videosRef.current;
+
+    const scrollAmount =
+      direction === "left"
+        ? container.scrollLeft - (container.offsetWidth + 20)
+        : container.scrollLeft + (container.offsetWidth + 20);
+
+    container.scrollTo({
+      left: scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="videosSection">
       <ContentWrapper>
         <div className="sectionHeading">Featured Videos</div>
+
+        <FaAngleDoubleLeft
+          onClick={() => handleNavigation("left")}
+          className="videosArrow videosLeftNavIcon"
+        />
+
+        <FaAngleDoubleRight
+          onClick={() => handleNavigation("right")}
+          className="videosArrow videosRightNavIcon"
+        />
+
         {!loading ? (
-          <div className="videos">
+          <div ref={videosRef} className="videos">
             {data?.map((item) => (
               <div
                 key={nanoid()}

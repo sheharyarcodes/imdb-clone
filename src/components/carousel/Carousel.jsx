@@ -1,8 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import {
-  BsFillArrowLeftCircleFill,
-  BsFillArrowRightCircleFill,
-} from "react-icons/bs";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
@@ -11,6 +7,8 @@ import PosterFallback from "../../assets/no-poster.png";
 import "./style.scss";
 import Rating from "../rating/Rating";
 import Genres from "../genres/Genres";
+
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 
 const Carousel = ({ data, loading, endpoint, title }) => {
   const carouselContainer = useRef();
@@ -46,14 +44,17 @@ const Carousel = ({ data, loading, endpoint, title }) => {
     <div className="carousel">
       <ContentWrapper>
         {title && <div className="carouselTitle">{title}</div>}
-        <BsFillArrowLeftCircleFill
-          className="carouselLeftNav arrow"
+
+        <FaAngleDoubleLeft
           onClick={() => handleNavigation("left")}
+          className="arrow leftNavIcon"
         />
-        <BsFillArrowRightCircleFill
-          className="carouselRighttNav arrow"
+
+        <FaAngleDoubleRight
           onClick={() => handleNavigation("right")}
+          className="arrow rightNavIcon"
         />
+
         {!loading ? (
           <div ref={carouselContainer} className="carouselItems">
             {data?.map((item) => {

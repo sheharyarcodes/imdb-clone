@@ -7,6 +7,32 @@
     color: white;
     margin-bottom: 25px;
   }
+
+  .videosArrow {
+    font-size: 40px;
+    color: #000;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-40%);
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 3;
+    display: none;
+    @include md {
+      display: block;
+    }
+    &:hover {
+      color: #fff;
+      opacity: 0.8;
+    }
+    .videosLeftNavIcon {
+      left: 2%;
+    }
+    .videosRightNavIcon {
+      right: 2%;
+    }
+  }
+
   .videos {
     display: flex;
     gap: 10px;
