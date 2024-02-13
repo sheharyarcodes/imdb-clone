@@ -1,7 +1,10 @@
 @import "../../../mixins.scss";
 .castSection {
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  @include md {
+    margin-bottom: 50px;
+  }
 
   .sectionHeading {
     font-size: 24px;

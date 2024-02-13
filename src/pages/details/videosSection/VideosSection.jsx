@@ -40,14 +40,22 @@ const VideosSection = ({ data, loading }) => {
   return (
     <div className="videosSection">
       <ContentWrapper>
-        <div className="sectionHeading">Featured Videos:</div>
+        <div className="sectionHeading">Featured Videos</div>
 
         {!loading ? (
           <div ref={videosRef} className="videos">
-            <FaAngleDoubleLeft
-              onClick={() => handleNavigation("left")}
-              className="videosArrow videosLeftNavIcon"
-            />
+            {data?.length > 4 && (
+              <>
+                <FaAngleDoubleLeft
+                  onClick={() => handleNavigation("left")}
+                  className="videosArrow videosLeftNavIcon"
+                />
+                <FaAngleDoubleRight
+                  onClick={() => handleNavigation("right")}
+                  className="videosArrow videosRightNavIcon"
+                />
+              </>
+            )}
 
             {data?.map((item) => (
               <div
@@ -67,11 +75,6 @@ const VideosSection = ({ data, loading }) => {
                 <div className="videoTitle">{item.name}</div>
               </div>
             ))}
-
-            <FaAngleDoubleRight
-              onClick={() => handleNavigation("right")}
-              className="videosArrow videosRightNavIcon"
-            />
           </div>
         ) : (
           <div className="videoSkeleton">

@@ -8,9 +8,10 @@ import avatar from "../../../assets/avatar.png";
 import { ContentWrapper, Image } from "../../../components";
 import { nanoid } from "@reduxjs/toolkit";
 
-const Cast = ({ data, loading }) => {
+const Cast = ({ mediaType, data, loading }) => {
   const { url } = useSelector((state) => state.home);
   const castRef = useRef(null);
+  const castType = mediaType === "tv" ? "TV Show's Cast" : "Movie's Cast";
 
   const handleNavigation = (direction) => {
     const container = castRef.current;
@@ -38,13 +39,21 @@ const Cast = ({ data, loading }) => {
   return (
     <div className="castSection">
       <ContentWrapper>
-        <div className="sectionHeading">Top Cast:</div>
+        <div className="sectionHeading">{castType}</div>
         {!loading ? (
           <div ref={castRef} className="listItems">
-            <FaAngleDoubleLeft
-              onClick={() => handleNavigation("left")}
-              className="castArrow castLeftNavIcon"
-            />
+            {data?.length > 6 && (
+              <>
+                <FaAngleDoubleLeft
+                  onClick={() => handleNavigation("left")}
+                  className="castArrow castLeftNavIcon"
+                />
+                <FaAngleDoubleRight
+                  onClick={() => handleNavigation("right")}
+                  className="castArrow castRightNavIcon"
+                />
+              </>
+            )}
 
             {data?.map((item) => {
               const imgUrl = item.profile_path
@@ -60,11 +69,6 @@ const Cast = ({ data, loading }) => {
                 </div>
               );
             })}
-
-            <FaAngleDoubleRight
-              onClick={() => handleNavigation("right")}
-              className="castArrow castRightNavIcon"
-            />
           </div>
         ) : (
           <div className="castSkeleton">
