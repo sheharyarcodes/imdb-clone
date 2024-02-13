@@ -2,10 +2,12 @@
 .castSection {
   position: relative;
   margin-bottom: 50px;
+
   .sectionHeading {
     font-size: 24px;
     color: white;
-    margin-bottom: 25px;
+    font-weight: 700;
+    margin-bottom: 18px;
   }
   .listItems {
     display: flex;
@@ -18,19 +20,52 @@
       margin: 0;
       padding: 0;
     }
+
+    .castArrow {
+      font-size: 40px;
+      color: #fff;
+      position: absolute;
+      top: 42%;
+      transform: translateY(-50%);
+      z-index: 3;
+      cursor: pointer;
+      opacity: 0.5;
+      display: none;
+      @include md {
+        display: block;
+      }
+      &:hover {
+        color: #000;
+        opacity: 0.8;
+      }
+    }
+    .castLeftNavIcon {
+      left: 4%;
+      @include xl {
+        left: 15%;
+      }
+    }
+    .castRightNavIcon {
+      right: 4%;
+      @include xl {
+        right: 15%;
+      }
+    }
+
     .listItem {
       text-align: center;
+
       color: white;
       .profileImg {
         width: 125px;
         height: 125px;
         border-radius: 50%;
         overflow: hidden;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
         @include md {
           width: 175px;
           height: 175px;
-          margin-bottom: 25px;
+          margin-bottom: 20px;
         }
         img {
           width: 100%;
@@ -77,11 +112,11 @@
         width: 125px;
         height: 125px;
         border-radius: 50%;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
         @include md {
           width: 175px;
           height: 175px;
-          margin-bottom: 25px;
+          margin-bottom: 20px;
         }
       }
       .row {

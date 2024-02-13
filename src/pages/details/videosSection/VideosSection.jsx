@@ -40,20 +40,15 @@ const VideosSection = ({ data, loading }) => {
   return (
     <div className="videosSection">
       <ContentWrapper>
-        <div className="sectionHeading">Featured Videos</div>
-
-        <FaAngleDoubleLeft
-          onClick={() => handleNavigation("left")}
-          className="videosArrow videosLeftNavIcon"
-        />
-
-        <FaAngleDoubleRight
-          onClick={() => handleNavigation("right")}
-          className="videosArrow videosRightNavIcon"
-        />
+        <div className="sectionHeading">Featured Videos:</div>
 
         {!loading ? (
           <div ref={videosRef} className="videos">
+            <FaAngleDoubleLeft
+              onClick={() => handleNavigation("left")}
+              className="videosArrow videosLeftNavIcon"
+            />
+
             {data?.map((item) => (
               <div
                 key={nanoid()}
@@ -72,6 +67,11 @@ const VideosSection = ({ data, loading }) => {
                 <div className="videoTitle">{item.name}</div>
               </div>
             ))}
+
+            <FaAngleDoubleRight
+              onClick={() => handleNavigation("right")}
+              className="videosArrow videosRightNavIcon"
+            />
           </div>
         ) : (
           <div className="videoSkeleton">
