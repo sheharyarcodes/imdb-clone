@@ -1,14 +1,11 @@
 import React, { useRef } from "react";
+import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import dayjs from "dayjs";
-import { ContentWrapper, Image } from "../";
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import { ContentWrapper, Image, Rating, Genres } from "../";
 import PosterFallback from "../../assets/no-poster.png";
 import "./style.scss";
-import Rating from "../rating/Rating";
-import Genres from "../genres/Genres";
-
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 
 const Carousel = ({ data, loading, endpoint, title }) => {
   const carouselContainer = useRef();

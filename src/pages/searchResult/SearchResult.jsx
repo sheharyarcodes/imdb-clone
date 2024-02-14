@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./style.scss";
+import fetchDataFromApi from "../../services/api";
+import { nanoid } from "@reduxjs/toolkit";
 import { useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
-import fetchDataFromApi from "../../services/api";
+import { Helmet } from "react-helmet-async";
 import { Card, Spinner, ContentWrapper, Image } from "../../components";
 import noResults from "../../assets/no-results.png";
-import { nanoid } from "@reduxjs/toolkit";
+import "./style.scss";
 
 const SearchResult = () => {
   const [data, setData] = useState(null);
@@ -47,6 +48,10 @@ const SearchResult = () => {
 
   return (
     <div className="searchResultsPage">
+      <Helmet>
+        <title>Search: "{query}"</title>
+      </Helmet>
+
       {loading && <Spinner initial={true} />}
       {!loading && (
         <ContentWrapper>
@@ -55,7 +60,7 @@ const SearchResult = () => {
               <div className="pageTitle">
                 {`Search result${
                   data?.total_results > 1 ? "s" : ""
-                } for " ${query} "`}
+                } for "${query}"`}
               </div>
               <InfiniteScroll
                 className="content"

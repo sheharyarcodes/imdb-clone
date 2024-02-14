@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./style.scss";
 import { nanoid } from "@reduxjs/toolkit";
+import "./style.scss";
 
 const SwitchTab = ({ data, onTabChange }) => {
   const [selectedTab, setSelectedTab] = useState(0);

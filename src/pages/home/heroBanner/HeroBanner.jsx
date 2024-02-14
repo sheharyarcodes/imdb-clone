@@ -1,10 +1,10 @@
-import "./style.scss";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import useFetch from "../../../hooks/useFetch";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { ContentWrapper, Image } from "../../../components";
 import { FaSearch } from "react-icons/fa";
+import { ContentWrapper, Image } from "../../../components";
+import "./style.scss";
 
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
@@ -15,16 +15,16 @@ const HeroBanner = () => {
   const { data, loading } = useFetch("/movie/upcoming");
 
   useEffect(() => {
-    const bg =
-      url.backdrop +
-      data?.results[Math.floor(Math.random() * 20)].backdrop_path;
+    const bg = String(
+      url.backdrop + data?.results[Math.floor(Math.random() * 20)].backdrop_path
+    );
 
     setBackground(bg);
   }, [data]);
 
   const handleSearchQuery = (event) => {
     if (event.key === "Enter" && query !== "") {
-      navigate(`/search/${query}`);
+      navigate(`/search/${query.toLowerCase()}`);
     }
   };
 
@@ -60,7 +60,11 @@ const HeroBanner = () => {
               placeholder="Search any movie or TV show"
               onKeyUp={handleSearchQuery}
             />
-            <button>
+            <button
+              onClick={() => {
+                query !== "" && navigate(`/search/${query.toLowerCase()}`);
+              }}
+            >
               <FaSearch color="white" size="25px" />
             </button>
           </div>

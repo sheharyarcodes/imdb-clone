@@ -1,12 +1,10 @@
 import React, { useRef } from "react";
 import { useSelector } from "react-redux";
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
-
-import "./style.scss";
-
-import avatar from "../../../assets/avatar.png";
-import { ContentWrapper, Image } from "../../../components";
 import { nanoid } from "@reduxjs/toolkit";
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import { ContentWrapper, Image } from "../../../components";
+import avatar from "../../../assets/avatar.png";
+import "./style.scss";
 
 const Cast = ({ mediaType, data, loading }) => {
   const { url } = useSelector((state) => state.home);
@@ -39,7 +37,7 @@ const Cast = ({ mediaType, data, loading }) => {
   return (
     <div className="castSection">
       <ContentWrapper>
-        <div className="sectionHeading">{castType}</div>
+        {data?.length > 0 && <div className="sectionHeading">{castType}</div>}
         {!loading ? (
           <div ref={castRef} className="listItems">
             {data?.length > 6 && (

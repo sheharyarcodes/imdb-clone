@@ -1,12 +1,14 @@
 import React from "react";
-import "./style.scss";
-import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import DetailsBanner from "./detailsBanner/DetailsBanner";
-import VideosSection from "./videosSection/VideosSection";
-import Cast from "./cast/Cast";
-import Similar from "./detailsCarousels/Similar";
-import Recommendation from "./detailsCarousels/Recommendation";
+import { useParams } from "react-router-dom";
+import {
+  Cast,
+  DetailsBanner,
+  Recommendation,
+  Similar,
+  VideosSection,
+} from "./";
+import "./style.scss";
 
 const Details = () => {
   const { mediaType, id } = useParams();
@@ -17,6 +19,8 @@ const Details = () => {
   );
   return (
     <div className="details">
+      {/* Helmet is declared in the DetailsBanner due to the access of the movie/tv_show's name/title. */}
+
       <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
       <Cast
         mediaType={mediaType}

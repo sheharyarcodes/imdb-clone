@@ -2,10 +2,9 @@ import React from "react";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-import "./style.scss";
 import { Rating, Image, Genres } from "../";
 import PosterFallback from "../../assets/no-poster.png";
+import "./style.scss";
 
 const Card = ({ data, mediaType }) => {
   const { url } = useSelector((state) => state.home);

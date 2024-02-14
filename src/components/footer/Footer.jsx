@@ -5,7 +5,7 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa";
-import ContentWrapper from "../contentWrapper/ContentWrapper";
+import { ContentWrapper } from "../";
 import "./style.scss";
 
 const Footer = () => {

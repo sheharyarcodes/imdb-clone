@@ -1,11 +1,9 @@
 import React, { useRef, useState } from "react";
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
-
-import "./style.scss";
-
-import PlayIcon from "../../../icons/PlayIcon";
-import { VideoPopup, Image, ContentWrapper } from "../../../components";
 import { nanoid } from "@reduxjs/toolkit";
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import { VideoPopup, Image, ContentWrapper } from "../../../components";
+import PlayIcon from "../../../icons/PlayIcon";
+import "./style.scss";
 
 const VideosSection = ({ data, loading }) => {
   const [show, setShow] = useState(false);
@@ -37,14 +35,21 @@ const VideosSection = ({ data, loading }) => {
     });
   };
 
+  const titleSlicer = (title) => {
+    const additionalText = title.length >= 40 ? " ..." : "";
+    return title.slice(0, 40) + additionalText;
+  };
+
   return (
     <div className="videosSection">
       <ContentWrapper>
-        <div className="sectionHeading">Featured Videos</div>
+        {data?.length > 0 && (
+          <div className="sectionHeading">Featured Videos</div>
+        )}
 
         {!loading ? (
           <div ref={videosRef} className="videos">
-            {data?.length > 4 && (
+            {data?.length > 3 && (
               <>
                 <FaAngleDoubleLeft
                   onClick={() => handleNavigation("left")}
@@ -72,7 +77,7 @@ const VideosSection = ({ data, loading }) => {
                   />
                   <PlayIcon />
                 </div>
-                <div className="videoTitle">{item.name}</div>
+                <div className="videoTitle">{titleSlicer(item.name)}</div>
               </div>
             ))}
           </div>

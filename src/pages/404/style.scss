@@ -1,0 +1,26 @@
+@import "../../mixins.scss";
+
+.pageNotFound {
+  height: 700px;
+  padding-top: 250px;
+  .contentWrapper {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .bigText {
+      font-size: 100px;
+      font-weight: 800;
+      @include md {
+        font-size: 150px;
+      }
+    }
+    .smallText {
+      font-size: 30px;
+      font-weight: 600;
+      @include md {
+        font-size: 45px;
+      }
+    }
+  }
+}

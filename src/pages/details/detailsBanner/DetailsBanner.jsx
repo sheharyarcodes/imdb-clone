@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import useFetch from "../../../hooks/useFetch";
+import dayjs from "dayjs";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import dayjs from "dayjs";
-import useFetch from "../../../hooks/useFetch";
-import PosterFallback from "../../../assets/no-poster.png";
+import { nanoid } from "@reduxjs/toolkit";
+import { Helmet } from "react-helmet-async";
 import {
   ContentWrapper,
   Genres,
@@ -12,19 +13,15 @@ import {
   VideoPopup,
 } from "../../../components";
 import PlayIcon from "../../../icons/PlayIcon";
-import { nanoid } from "@reduxjs/toolkit";
-
+import PosterFallback from "../../../assets/no-poster.png";
 import "./style.scss";
 
-// import { PlayIcon } from "../Playbtn";
-// import VideoPopup from "../../../components/videoPopup/VideoPopup";
 const DetailsBanner = ({ video, crew }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
 
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}`);
-  console.log(data);
 
   const { url } = useSelector((state) => state.home);
 
@@ -43,6 +40,15 @@ const DetailsBanner = ({ video, crew }) => {
 
   return (
     <div className="detailsBanner">
+      <Helmet>
+        <title>
+          {`${data?.name || data?.title || "Title"} (${dayjs(
+            data?.release_date
+          ).format("YYYY")}) `}
+          | IMDb Clone
+        </title>
+      </Helmet>
+
       {!loading ? (
         <>
           {!!data && (

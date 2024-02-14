@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Carousel } from "../../../components";
 import useFetch from "../../../hooks/useFetch";
 

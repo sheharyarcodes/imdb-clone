@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ContentWrapper } from "../";
 import logo from "../../assets/imdb-logo.png";
-
 import "./style.scss";
 
 const Header = () => {
@@ -41,11 +40,13 @@ const Header = () => {
     } else {
       navigate("/explore/tv");
     }
+
+    setMobileMenu(false);
   };
 
   const handleSearchQuery = (event) => {
     if (event.key === "Enter" && query !== "") {
-      navigate(`/search/${query}`);
+      navigate(`/search/${query.toLowerCase()}`);
       setShowSearch(false);
     }
   };
