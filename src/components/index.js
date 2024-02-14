@@ -7,6 +7,8 @@ import SwitchTab from "./switchTab/SwitchTab";
 import Genres from "./genres/Genres";
 import Rating from "./rating/Rating";
 import VideoPopup from "./videoPopup/VideoPopup";
+import Card from "./card/Card";
+import Spinner from "./spinner/Spinner";
 
 export {
   Header,
@@ -18,4 +20,6 @@ export {
   Genres,
   Rating,
   VideoPopup,
+  Card,
+  Spinner,
 };
