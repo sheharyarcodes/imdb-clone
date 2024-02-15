@@ -79,5 +79,3 @@ This **imdb-clone** is a project aimed at replicating some of the core functiona
 
 ---
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sheharyarcodes)
-[![github](https://img.shields.io/badge/github-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sheharyarcodes)
