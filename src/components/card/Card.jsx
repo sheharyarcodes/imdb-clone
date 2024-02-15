@@ -19,7 +19,7 @@ const Card = ({ data, mediaType }) => {
     >
       <div className="posterBlock">
         <Image className="posterImg" src={posterUrl} />
-        <Rating childern={data.vote_average.toFixed(1)} />
+        <Rating children={data.vote_average.toFixed(1)} />
         <Genres data={data.genre_ids.slice(0, 2)} />
       </div>
       <div className="textBlock">

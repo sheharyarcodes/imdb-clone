@@ -98,7 +98,7 @@ const DetailsBanner = ({ video, crew }) => {
 
                       <div className="ratingContainer">
                         <span className="heading">Rating: </span>
-                        <Rating childern={data.vote_average.toFixed(1)} />
+                        <Rating children={data.vote_average.toFixed(1)} />
                       </div>
                     </div>
 
