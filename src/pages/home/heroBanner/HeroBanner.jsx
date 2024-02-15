@@ -26,7 +26,7 @@ const HeroBanner = () => {
 
   useEffect(() => {
     urlBackground();
-  }, [data]);
+  }, [url, data]);
 
   const handleSearchQuery = (event) => {
     if (event.key === "Enter" && query !== "") {
