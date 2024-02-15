@@ -14,15 +14,19 @@ const HeroBanner = () => {
   const { url } = useSelector((state) => state.home);
   const { data, loading } = useFetch("/movie/upcoming");
 
-  useEffect(() => {
-    const bg = String(
-      url?.backdrop +
-        data?.results[Math.floor(Math.random() * 20)].backdrop_path
-    );
-    console.log(bg);
+  const urlBackground = () => {
+    if (url && data) {
+      const bg = String(
+        url.backdrop +
+          data?.results[Math.floor(Math.random() * 20)].backdrop_path
+      );
+      setBackground(bg);
+    }
+  };
 
-    setBackground(bg);
-  }, [data, loading]);
+  useEffect(() => {
+    urlBackground();
+  }, [data]);
 
   const handleSearchQuery = (event) => {
     if (event.key === "Enter" && query !== "") {
