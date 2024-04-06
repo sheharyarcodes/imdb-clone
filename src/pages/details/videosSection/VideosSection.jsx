@@ -47,21 +47,21 @@ const VideosSection = ({ data, loading }) => {
           <div className="sectionHeading">Featured Videos</div>
         )}
 
+        {!loading && data?.length > 3 && (
+          <>
+            <FaAngleDoubleLeft
+              onClick={() => handleNavigation("left")}
+              className="videosArrow videosLeftNavIcon"
+            />
+            <FaAngleDoubleRight
+              onClick={() => handleNavigation("right")}
+              className="videosArrow videosRightNavIcon"
+            />
+          </>
+        )}
+
         {!loading ? (
           <div ref={videosRef} className="videos">
-            {data?.length > 3 && (
-              <>
-                <FaAngleDoubleLeft
-                  onClick={() => handleNavigation("left")}
-                  className="videosArrow videosLeftNavIcon"
-                />
-                <FaAngleDoubleRight
-                  onClick={() => handleNavigation("right")}
-                  className="videosArrow videosRightNavIcon"
-                />
-              </>
-            )}
-
             {data?.map((item) => (
               <div
                 key={nanoid()}

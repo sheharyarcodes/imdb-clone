@@ -6,6 +6,35 @@
     margin-bottom: 50px;
   }
 
+  .contentWrapper {
+    position: relative;
+  }
+
+  .castArrow {
+    font-size: 40px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    cursor: pointer;
+    opacity: 0.5;
+    display: none;
+    @include md {
+      display: block;
+    }
+    &:hover {
+      color: #000;
+      opacity: 0.8;
+    }
+  }
+  .castLeftNavIcon {
+    left: 2%;
+  }
+  .castRightNavIcon {
+    right: 2%;
+  }
+
   .sectionHeading {
     font-size: 24px;
     color: white;
@@ -22,37 +51,6 @@
     @include md {
       margin: 0;
       padding: 0;
-    }
-
-    .castArrow {
-      font-size: 40px;
-      color: #fff;
-      position: absolute;
-      top: 42%;
-      transform: translateY(-50%);
-      z-index: 3;
-      cursor: pointer;
-      opacity: 0.5;
-      display: none;
-      @include md {
-        display: block;
-      }
-      &:hover {
-        color: #000;
-        opacity: 0.8;
-      }
-    }
-    .castLeftNavIcon {
-      left: 4%;
-      @include xl {
-        left: 15%;
-      }
-    }
-    .castRightNavIcon {
-      right: 4%;
-      @include xl {
-        right: 15%;
-      }
     }
 
     .listItem {

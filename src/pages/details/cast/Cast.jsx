@@ -38,21 +38,22 @@ const Cast = ({ mediaType, data, loading }) => {
     <div className="castSection">
       <ContentWrapper>
         {data?.length > 0 && <div className="sectionHeading">{castType}</div>}
+
+        {data?.length > 6 && (
+          <>
+            <FaAngleDoubleLeft
+              onClick={() => handleNavigation("left")}
+              className="castArrow castLeftNavIcon"
+            />
+            <FaAngleDoubleRight
+              onClick={() => handleNavigation("right")}
+              className="castArrow castRightNavIcon"
+            />
+          </>
+        )}
+
         {!loading ? (
           <div ref={castRef} className="listItems">
-            {data?.length > 6 && (
-              <>
-                <FaAngleDoubleLeft
-                  onClick={() => handleNavigation("left")}
-                  className="castArrow castLeftNavIcon"
-                />
-                <FaAngleDoubleRight
-                  onClick={() => handleNavigation("right")}
-                  className="castArrow castRightNavIcon"
-                />
-              </>
-            )}
-
             {data?.map((item) => {
               const imgUrl = item.profile_path
                 ? url.profile + item.profile_path
